@@ -30,13 +30,13 @@ module.exports = {
         const { name, bio, avatar_url: avatar } = response.data;
 
         const dev = await Dev.create({
-            name,
+            name: !name ? username : name,
             user: username,
             bio,
             avatar
         })
 
-        return res.json({ dev });
+        return res.json(dev);
     }
 }
 
